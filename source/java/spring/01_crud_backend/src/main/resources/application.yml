@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+tigris:
+  project:
+    name: "{{.ProjectName}}"
+  server:
+    url: "{{.URL}}"
+  network:
+    usePlainText: true
+  authorization:
+    client_id: {{.ClientID}}
+    client_secret: {{.ClientSecret}}
+
+springdoc:
+  swagger-ui:
+    path: "/swagger.html"
+    operationsSorter: "method"
