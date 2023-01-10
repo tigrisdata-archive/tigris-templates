@@ -1,0 +1,42 @@
+#!/bin/bash
+
+set -e
+
+if [ $# -lt 4 ]; then
+  printf "Usage:\n\t%s {language} {framework} {schema} {project name} {package name} [components]\n\n" "$0"
+  exit 1
+fi
+
+if ! which tigris >/dev/null; then
+  echo "Installing Tigris CLI"
+  OS=$(uname -s)
+  if [ "$OS" == "Darwin" ]; then
+    brew install tigrisdata/tigris/tigris-cli
+  elif [ "$OS" == "Linux" ]; then
+    curl -sSL https://tigris.dev/cli-linux | sudo tar -xz -C /usr/local/bin
+  else
+    echo "Unsupported operating system: ${OS}"
+    exit 1
+  fi
+fi
+
+export TIGRIS_URL=localhost:8081
+export TIGRIS_TEMPLATES_PATH=.
+
+cli=tigris
+
+scaffold() {
+	$cli local up 8081
+
+  $cli create project "$4" \
+    --schema-template="$3" \
+    --language "$1" \
+    --framework="$2" \
+    --package-name="$5" \
+    --components="$6" \
+    --output-directory=.
+
+  $cli local down
+}
+
+scaffold "$1" "$2" "$3" "$4" "$5" "$6"

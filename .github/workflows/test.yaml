@@ -4,7 +4,10 @@ on:
   pull_request:
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macOS-latest ]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -17,6 +20,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+
+      - if: matrix.os == 'macOS-latest'
+        run: |
+          brew install colima docker docker-compose tree
+          colima start
+          mkdir -p ~/.docker/cli-plugins
+          ln -sfn $(brew --prefix)/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
+
+      - run: npm install -g @go-task/cli @tigrisdata/tigris-cli
 
       - name: Run tests
         run: |

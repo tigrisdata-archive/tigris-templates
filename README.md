@@ -111,3 +111,12 @@ Per collection files, in addition to global context, set the current collection 
 
   * HasTime bool // set if collection schema contains fields with Time type
   * HasUUID bool // set if colletion schema contains fields with UUID type
+
+## Developing templates
+
+Templates with the local changes can be instantiated using helper script
+as follows:
+
+```
+./instantiate typescript nextjs ecommerce my_proj1 company/my_proj1
+```
