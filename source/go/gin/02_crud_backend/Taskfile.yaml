@@ -15,7 +15,7 @@ tasks:
       - task: clean
       - bin/tigris dev start
       - TIGRIS_URL=localhost:8081 bin/tigris create project {{.ProjectName}}
-      - go run main.go
+      - TIGRIS_URL=localhost:8081 go run main.go
 
   run:docker:
     desc: Run {{.ProjectName}} in the Docker development environment

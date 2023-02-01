@@ -120,3 +120,10 @@ as follows:
 ```
 ./instantiate typescript nextjs ecommerce my_proj1 company/my_proj1
 ```
+
+Command generates project code in `./my_proj1`.
+
+Usage:
+```
+"Usage: {language} {framework} {schema} {project name} {package name} [components]"
+```
