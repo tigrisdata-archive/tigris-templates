@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { {{.Collection.Name}} } from '../../../models/tigris/{{.ProjectName}}/{{.Collection.JSON}}';
+import { {{.Collection.Name}} } from '../../../models/tigris/{{.Collection.JSON}}';
 import tigris from '../../../lib/tigris';
 {{- if ne (len .Collection.PrimaryKey) 1}}
-import { LogicalOperator } from "@tigrisdata/core/dist/types";
+import { LogicalOperator } from "@tigrisdata/core";
 {{- end}}
 {{with .Collection}}
 type Data = {
@@ -33,7 +33,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 async function handleGet(req: NextApiRequest, res: NextApiResponse<Data>) {
   try {
     const coll = tigris.getCollection<{{.Name}}>("{{.JSON}}");
-    const doc = await coll.findOne({
+    const doc = await coll.findOne({ filter: {
     {{- $n := .Name -}}
     {{- if eq (len .PrimaryKey) 1}}
     {{- range .PrimaryKey}}
@@ -47,7 +47,7 @@ async function handleGet(req: NextApiRequest, res: NextApiResponse<Data>) {
     {{- end}}
         ]
     {{- end}}
-    });
+    }});
     if (!doc) {
       res.status(404).json({ error: 'Not found' });
     } else {
@@ -76,7 +76,7 @@ async function handlePut(req: NextApiRequest, res: NextApiResponse<Data>) {
 async function handleDelete(req: NextApiRequest, res: NextApiResponse<Data>) {
   try {
     const coll = tigris.getCollection<{{.Name}}>("{{.JSON}}");
-    const status = (await coll.deleteOne({
+    const status = (await coll.deleteOne({ filter: {
     {{- $n := .Name -}}
     {{- if eq (len .PrimaryKey) 1}}
     {{- range .PrimaryKey}}
@@ -90,7 +90,7 @@ async function handleDelete(req: NextApiRequest, res: NextApiResponse<Data>) {
       {{- end}}
         ]
     {{- end}}
-    })).status;
+    }})).status;
     if (status === 'deleted') {
       console.log('deleted:' + req.query)
       res.status(200).json({});

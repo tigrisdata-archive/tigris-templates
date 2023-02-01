@@ -1,7 +1,6 @@
 {{- with .Collection -}}
 import express, { NextFunction, Request, Response, Router } from "express";
-import { Collection, DB } from "@tigrisdata/core";
-import { SearchRequest } from "@tigrisdata/core/dist/search/types";
+import { Collection, DB, SearchQuery } from "@tigrisdata/core";
 import { {{.Name}} } from "../models/{{.JSONSingular}}";
 import { Route } from "./routes";
 {{- if ne (len .PrimaryKey) 1}}
@@ -39,15 +38,17 @@ export class {{.Name}}Route implements Route {
       .findOne({
       {{- if eq (len .PrimaryKey) 1}}
         {{- range .PrimaryKey}}
-        {{.}}: req.params.{{.}},
+        filter: { {{.}}: req.params.{{.}} },
         {{- end}}
         {{- else}}
-        op: LogicalOperator.AND,
-        selectorFilters: [
+        filter: {
+          op: LogicalOperator.AND,
+          selectorFilters: [
         {{- range .PrimaryKey}}
-          { {{.}}: req.params.{{.}} },
+            { {{.}}: req.params.{{.}} },
         {{- end}}
-        ]
+          ]
+        }
       {{- end}}
       })
       .then(({{.NameDecap}}) => {
@@ -81,15 +82,17 @@ export class {{.Name}}Route implements Route {
       .deleteOne({
       {{- if eq (len .PrimaryKey) 1}}
         {{- range .PrimaryKey}}
-        {{.}}: req.params.{{.}},
+        filter: { {{.}}: req.params.{{.}} },
         {{- end}}
-        {{- else}}
-        op: LogicalOperator.AND,
-        selectorFilters: [
+      {{- else}}
+        filter: {
+          op: LogicalOperator.AND,
+          selectorFilters: [
         {{- range .PrimaryKey}}
-          { {{.}}: req.params.{{.}} },
+            { {{.}}: req.params.{{.}} },
         {{- end}}
-        ]
+          ]
+        }
       {{- end}}
       })
       .then((response) => {
@@ -101,10 +104,10 @@ export class {{.Name}}Route implements Route {
   };
 
   public search{{.Name}} = async (req: Request, res: Response, next: NextFunction) => {
-    const searchRequest: SearchRequest<{{.Name}}> = req.body;
+    const searchRequest: SearchQuery<{{.Name}}> = req.body;
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/json");
-    const resultStream = this.{{.NamePluralDecap}}.searchStream(searchRequest);
+    const resultStream = this.{{.NamePluralDecap}}.search(searchRequest).stream();
     try {
       for await (const result of resultStream) {
         res.write(JSON.stringify(result));

@@ -21,12 +21,13 @@
     "@rjsf/core": "^5.0.0-beta.13",
     "@rjsf/utils": "^5.0.0-beta.13",
     "@rjsf/validator-ajv8": "^5.0.0-beta.13",
-    "@tigrisdata/core": "1.0.0-dev.2",
+    "@tigrisdata/core": "1.0.0-beta.30",
     "next": "^13.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@tigrisdata/tigris-cli": "^1.0.0-beta.15",
     "@types/node": "18.11.2",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",

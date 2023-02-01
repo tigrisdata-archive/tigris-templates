@@ -1,23 +1,21 @@
-import {
-  TigrisCollectionType,
-  TigrisDataTypes,
-  TigrisSchema,
-} from "@tigrisdata/core/dist/types";
+import { Tigris } from "@tigrisdata/core";
 {{range .Collections}}
-import { {{.Name}}, {{.NameDecap}}Schema } from "./models/{{.JSONSingular}}";
+import { {{.Name}} } from "./models/{{.JSONSingular}}";
 {{- end}}
 
 import {DB, Tigris, TigrisClientConfig} from "@tigrisdata/core";
 
 async function main() {
     var tigris = new Tigris();
-    var db = await tigris.createDatabaseIfNotExists("{{.ProjectName}}");
+    await tigris.getDatabase().initializeBranch();
 
-    await Promise.all([
-   {{- range .Collections}}
-      db.createOrUpdateCollection<{{.Name}}>("{{.JSON}}", {{.NameDecap}}Schema),
-   {{- end}}
-    ])
+    // register schemas
+    await tigris.registerSchemas([
+{{- range .Collections}}
+        {{.Name}},
+{{- end}}
+    ]);
+
 {{range .Collections}}
     var coll{{.Name}} = db.getCollection<{{.Name}}>("{{.JSON}}");
 

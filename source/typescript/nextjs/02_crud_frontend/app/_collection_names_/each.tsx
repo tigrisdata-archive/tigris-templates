@@ -4,7 +4,7 @@ import Image from 'next/image';
 import React from 'react';
 {{- $dbname:=.ProjectName -}}
 {{with .Collection}}
-import { {{.Name}} } from '../../models/tigris/{{$dbname}}/{{.JSON}}';
+import { {{.Name}} } from '../../models/tigris/{{.JSON}}';
 
 type Props = {
   {{.NameDecap}}: {{.Name}};

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { {{.Collection.Name}} } from '../../../models/tigris/{{.ProjectName}}/{{.Collection.JSON}}';
-import { SearchRequest } from '@tigrisdata/core/dist/search/types';
+import { {{.Collection.Name}} } from '../../../models/tigris/{{.Collection.JSON}}';
+import { SearchQuery } from '@tigrisdata/core';
 import tigris from '../../../lib/tigris';
 {{with .Collection}}
 type Data = {
@@ -17,11 +17,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   }
   try {
     const coll = tigris.getCollection<{{.Name}}>("{{.JSON}}");
-    const searchRequest: SearchRequest<{{.Name}}> = { q: query as string };
+    const searchRequest: SearchQuery<{{.Name}}> = { q: query as string };
     const searchResult = await coll.search(searchRequest);
     const docs = new Array<{{.Name}}>();
-    for (const hit of searchResult.hits) {
-      docs.push(hit.document);
+    for await (const result of searchResult.stream()) {
+      docs.push(result);
     }
     res.status(200).json({ result: docs });
   } catch (err) {

@@ -1,3 +1,2 @@
-import { TigrisCollectionType, TigrisDataTypes, TigrisSchema } from '@tigrisdata/core/dist/types';
-
+import { Field, PrimaryKey, TigrisCollection, TigrisDataTypes } from "@tigrisdata/core";
 {{.Collection.Schema}}

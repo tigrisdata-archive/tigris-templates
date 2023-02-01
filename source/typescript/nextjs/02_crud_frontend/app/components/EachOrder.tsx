@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import React from 'react';
-import { Order } from '../../models/tigris/{{.ProjectName}}/orders';
+import { Order } from '../../models/tigris/orders';
 
 type Props = {
   order: Order;

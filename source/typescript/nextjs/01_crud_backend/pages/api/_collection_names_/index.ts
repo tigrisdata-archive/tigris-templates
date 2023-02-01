@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { {{.Collection.Name}} } from '../../../models/tigris/{{.ProjectName}}/{{.Collection.JSON}}';
+import { {{.Collection.Name}} } from '../../../models/tigris/{{.Collection.JSON}}';
 import tigris from '../../../lib/tigris';
 {{with .Collection}}
 type Response = {

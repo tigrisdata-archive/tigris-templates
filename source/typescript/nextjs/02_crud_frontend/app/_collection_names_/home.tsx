@@ -4,7 +4,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 {{- $dbname := .ProjectName -}}
 {{with .Collection}}
-import { {{.Name}} } from '../../models/tigris/{{$dbname}}/{{.JSON}}';
+import { {{.Name}} } from '../../models/tigris/{{.JSON}}';
 import Each from './each';
 import LoaderWave from '../components/LoaderWave';
 import validator from "@rjsf/validator-ajv8";

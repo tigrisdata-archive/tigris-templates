@@ -1,7 +1,7 @@
 import express from "express";
 import { DB, Tigris } from "@tigrisdata/core";
 {{range .Collections}}
-import { {{.Name}}, {{.NameDecap}}Schema } from "./models/{{.JSONSingular}}";
+import { {{.Name}} } from "./models/{{.JSONSingular}}";
 {{- end}}
 {{range .Collections}}
 import { {{.Name}}Route } from "./routes/{{.JSONSingular}}";
@@ -21,7 +21,7 @@ export class App {
 
     // For the Tigris preview environment use the following initialization.
     // Configuration input is supplied from .env file - refer to README.md
-    this.tigris = new Tigris({projectName: "{{.ProjectName}}"});
+    this.tigris = new Tigris({projectName: this.dbName, branch: "main"});
   }
 
   public async setup() {
@@ -31,15 +31,14 @@ export class App {
   }
 
   public async initializeTigris() {
-    // create database (if not exists)
     this.db = await this.tigris.getDatabase();
     console.log("db: " + this.dbName + " created successfully");
 
     // register collections schema and wait for it to finish
-    await Promise.all([
-   {{- range .Collections}}
-      this.db.createOrUpdateCollection<{{.Name}}>("{{.JSON}}", {{.NameDecap}}Schema),
-   {{- end}}
+    await this.tigris.registerSchemas([
+    {{- range .Collections}}
+      {{.Name}},
+    {{- end}}
     ]);
   }
 

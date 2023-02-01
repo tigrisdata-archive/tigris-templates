@@ -4,7 +4,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import EachOrder from './EachOrder';
 import LoaderWave from './LoaderWave';
-import { Order } from '../../models/tigris/{{.ProjectName}}/orders';
+import { Order } from '../../models/tigris/orders';
 
 const Home = () => {
   // This is the input field
