@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 import { {{.Name}} } from '../../models/tigris/{{.JSON}}';
 import Each from './each';
 import LoaderWave from '../components/LoaderWave';
+import Menu from '../components/Menu';
 import validator from "@rjsf/validator-ajv8";
 import { RJSFSchema } from "@rjsf/utils";
 import Form from "@rjsf/core";
@@ -39,7 +40,7 @@ const Home = () => {
     setIsLoading(true);
     setIsError(false);
 
-    fetch('/api/{{.JSON}}')
+    fetch('/api/{{.JSON}}?limit=10')
       .then(response => response.json())
       .then(data => {
         setIsLoading(false);
@@ -180,6 +181,8 @@ const Home = () => {
     <div>
       <div className="container">
         <h2>{{$dbname}} using Next.js 13 and Tigris</h2>
+
+        <Menu />
 
         {/* Search Header */}
         <div className="searchHeader">

@@ -56,6 +56,7 @@ async function handleGet(req: NextApiRequest, res: NextApiResponse<Data>) {
     }
   } catch (err) {
     const error = err as Error;
+    console.log("error: " + error.message)
     res.status(500).json({ error: error.message });
   }
 }
@@ -69,6 +70,7 @@ async function handlePut(req: NextApiRequest, res: NextApiResponse<Data>) {
     res.status(200).json({ result: updated });
   } catch (err) {
     const error = err as Error;
+    console.log("error: " + error.message)
     res.status(500).json({ error: error.message });
   }
 }
@@ -99,6 +101,7 @@ async function handleDelete(req: NextApiRequest, res: NextApiResponse<Data>) {
     }
   } catch (err) {
     const error = err as Error;
+    console.log("error: " + error.message)
     res.status(500).json({ error: error.message });
   }
 }
