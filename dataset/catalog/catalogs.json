@@ -1,0 +1,135 @@
+[{
+        "id": "2f7301f2-69b2-4b67-a3e3-9d9e7cda5948",
+        "name": "fiona handbag",
+        "price": 99.9,
+        "brand": "michael kors",
+        "labels": "purses",
+        "popularity": 8,
+        "review": {
+            "author": "alice",
+            "rating": 7
+        }
+    }, {
+        "id": "c7ec6a25-6a7a-4d9b-bced-6b40f6d097c6",
+        "name": "tote bag",
+        "price": 49,
+        "brand": "coach",
+        "labels": "handbags",
+        "popularity": 9,
+        "review": {
+            "author": "olivia",
+            "rating": 8.3
+        }
+    }, {
+        "id": "4b4f7e06-025a-4b70-853f-0be7a38d221d",
+        "name": "sling bag",
+        "price": 75,
+        "brand": "coach",
+        "labels": "purses",
+        "popularity": 9,
+        "review": {
+            "author": "alice",
+            "rating": 9.2
+        }
+    }, {
+        "id": "24034d4c-4de4-4ee7-8492-0d0f27b8d46b",
+        "name": "sneakers shoes",
+        "price": 40,
+        "brand": "adidas",
+        "labels": "shoes",
+        "popularity": 10,
+        "review": {
+            "author": "olivia",
+            "rating": 9
+        }
+    }, {
+        "id": "1aeb7c50-201d-42e8-8b77-23f3a3b86a89",
+        "name": "running shoes",
+        "price": 89,
+        "brand": "nike",
+        "labels": "shoes",
+        "popularity": 10,
+        "review": {
+            "author": "olivia",
+            "rating": 8.5
+        }
+    }, {
+        "id": "a3e3c779-31cb-4d60-87cb-c4edc64ab4b7",
+        "name": "running shorts",
+        "price": 35,
+        "brand": "adidas",
+        "labels": "clothing",
+        "popularity": 7,
+        "review": {
+            "author": "olivia",
+            "rating": 7.5
+        }
+    },
+    {
+        "id": "01a83c14-3d67-438c-b3cf-2b75a09c34d6",
+        "name": "leather wallet",
+        "price": 65.0,
+        "brand": "Fossil",
+        "labels": "accessories",
+        "popularity": 9,
+        "review": {
+            "author": "john",
+            "rating": 8.5
+        }
+    }, {
+        "id": "1df0a235-ecda-416f-b19a-7e89c1dcd2c8",
+        "name": "leather shoes",
+        "price": 110.0,
+        "brand": "Clarks",
+        "labels": "shoes",
+        "popularity": 9,
+        "review": {
+            "author": "jane",
+            "rating": 9.5
+        }
+    }, {
+        "id": "2a2d47f2-099a-4391-90f8-d52c8a06a9a9",
+        "name": "denim jeans",
+        "price": 55.0,
+        "brand": "Levi's",
+        "labels": "clothing",
+        "popularity": 8,
+        "review": {
+            "author": "joe",
+            "rating": 7.5
+        }
+    }, {
+        "id": "34e601bf-0c7b-4bea-8ab4-e4c4c7f44d54",
+        "name": "satchel bag",
+        "price": 120.0,
+        "brand": "Kate Spade",
+        "labels": "handbags",
+        "popularity": 10,
+        "review": {
+            "author": "mary",
+            "rating": 9.8
+        }
+    }, {
+        "id": "5af290ce-8c22-4460-9e33-9a9a869df8b9",
+        "name": "sneakers",
+        "price": 80.0,
+        "brand": "Puma",
+        "labels": "shoes",
+        "popularity": 9,
+        "review": {
+            "author": "joe",
+            "rating": 8.5
+        }
+    }, {
+        "id": "72b8f1f4-9e91-43d9-8b8f-c26d7413990f",
+        "name": "leather jacket",
+        "price": 200.0,
+        "brand": "AllSaints",
+        "labels": "clothing",
+        "popularity": 10,
+        "review": {
+            "author": "jane",
+            "rating": 9.7
+        }
+    }
+]
