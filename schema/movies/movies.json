@@ -1,0 +1,23 @@
+{
+    "title": "movies",
+    "properties": {
+        "cast": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "genres": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "title": {
+            "type": "string"
+        },
+        "year": {
+            "type": "integer"
+        }
+    }
+}
