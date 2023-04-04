@@ -1,40 +1,38 @@
 {
-    "schema": {
-        "title": "catalogs",
-        "properties": {
-            "brand": {
-                "type": "string"
-            },
-            "id": {
-                "type": "string",
-                "format": "uuid"
-            },
-            "labels": {
-                "type": "string"
-            },
-            "name": {
-                "type": "string"
-            },
-            "popularity": {
-                "type": "integer"
-            },
-            "price": {
-                "type": "integer"
-            },
-            "review": {
-                "type": "object",
-                "properties": {
-                    "author": {
-                        "type": "string"
-                    },
-                    "rating": {
-                        "type": "number"
-                    }
+    "title": "catalogs",
+    "properties": {
+        "brand": {
+            "type": "string"
+        },
+        "id": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "labels": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "popularity": {
+            "type": "integer"
+        },
+        "price": {
+            "type": "integer"
+        },
+        "review": {
+            "type": "object",
+            "properties": {
+                "author": {
+                    "type": "string"
+                },
+                "rating": {
+                    "type": "number"
                 }
             }
-        },
-        "source": {
-            "type": "external"
         }
+    },
+    "source": {
+        "type": "external"
     }
 }
