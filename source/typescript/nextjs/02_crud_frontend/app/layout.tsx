@@ -2,7 +2,7 @@ import React from 'react';
 import { Rubik } from '@next/font/google';
 import './globals.css';
 
-const rubik = Rubik();
+const rubik = Rubik({ subsets: ['latin'] });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

@@ -9,7 +9,6 @@ import Each from './each';
 import LoaderWave from '../components/LoaderWave';
 import Menu from '../components/Menu';
 import validator from "@rjsf/validator-ajv8";
-import { RJSFSchema } from "@rjsf/utils";
 import Form from "@rjsf/core";
 const Home = () => {
   // This is the input field
